@@ -1,0 +1,29 @@
+{
+  "name": "electron-event-dispatcher",
+  "version": "0.0.1",
+  "description": "Event Dispatcher Concept for Electron Apps",
+  "keywords": [
+    "electron",
+    "events",
+    "ipc"
+  ],
+  "repository": "hk-labs/electron-event-dispatcher",
+  "bugs": {
+    "url": "https://github.com/hk-labs/electron-event-dispatcher/issues"
+  },
+  "main": "lib/event-dispatcher.js",
+  "scripts": {
+    "test": "mocha -r mocha.conf.js test/*.spec.js"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "chai-as-promised": "^7.1.1",
+    "sinon": "^2.3.7",
+    "sinon-chai": "^2.11.0"
+  },
+  "author": {
+    "name": "Dan Kerimdzhanov",
+    "email": "kerimdzhanov@gmail.com"
+  },
+  "license": "MIT"
+}
