@@ -157,94 +157,55 @@ electron's `BrowserWindow`s and any `EventEmitter`s (electron's ipc, tcp/web soc
 
 
 #### `#attach(window)`
-
 Attach a `BrowserWindow` instance to the event dispatcher.
 Attached windows will receive all `#broadcast()`ing events.
 
-##### `window`
-
-Electron's `BrowserWindow` instance.
-
-Type: `BrowserWindow`
+| Param  | Type            | Description                          |
+| ------ | --------------- | ------------------------------------ |
+| window | `BrowserWindow` | Electron's `BrowserWindow` instance. |
 
 
 #### `#detach(window)`
-
 Detach a given `window` from the event dispatcher.
 
 _Technically, removes a given `window` reference from
 the attached windows collection to give'em be garbage collected._
 
-##### `window`
+| Param  | Type            | Description                          |
+| ------ | --------------- | ------------------------------------ |
+| window | `BrowserWindow` | Electron's `BrowserWindow` instance. |
 
-Electron's `BrowserWindow` instance.
-
-Type: `BrowserWindow`
-
-
-#### `#broadcast(event, ...args)`
-
+#### `#broadcast(event, [...args])`
 Broadcast an event to all attached windows.
 
-##### `event`
-
-The name of the event to broadcast.
-
-Type: `String`
-
-##### `...args` (optional)
-
-Any number of event-related arguments.
-
+| Param     | Type           | Description                            |
+| --------- | -------------- | -------------------------------------- |
+| event     | `String`       | The name of the event to broadcast.    |
+| [...args] | `EventEmitter` | Any number of event-related arguments. |
 
 #### `#connect(emitter, handlers)`
-
 Connect event emitter handlers in the context of this dispatcher.
 
-##### `emitter`
-
-An event emitter instance.
-
-Type: `EventEmitter`
-
-##### `handlers`
-
-An `event` => `function` object map, where `event` is a name
-of event to handle and `function` is a handler of this event.
-
-Type: `Object<String, Function>`
-
+| Param    | Type                       | Description                |
+| -------- | -------------------------- | -------------------------- |
+| emitter  | `EventEmitter`             | An event emitter instance. |
+| handlers | `Object<String, Function>` | An `event` => `function` object map, where `event` is a name of event to handle and `function` is a handler of this event. |
 
 #### `#disconnect(emitter)`
-
 Disconnect event emitter handlers from this dispatcher.
 
-##### `emitter`
+| Param   | Type           | Description                |
+| ------- | -------------- | -------------------------- |
+| emitter | `EventEmitter` | An event emitter instance. |
 
-An event emitter instance.
-
-Type: `EventEmitter`
-
-
-#### `#start()`
-
+#### `#start()` ⇒ `Promise`
 Start the event dispatcher. Binds all `#connect()`ed event emitters' handlers.
 
-##### return `Promise`
-
-
-#### `#stop()`
-
+#### `#stop()` ⇒ `Promise`
 Stop the event dispatcher. Unbinds all `#connect()`ed event emitters' handlers. 
 
-##### return: `Promise`
-
-
-#### `#restart()`
-
+#### `#restart()` ⇒ `Promise`
 Restart the event dispatcher.
-
-##### return: `Promise`
 
 
 ## Contributing
