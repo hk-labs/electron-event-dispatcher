@@ -307,4 +307,15 @@ describe('EventDispatcher', () => {
         });
     });
   });
+
+  describe('#isRunning', () => {
+    it("reflects dispatcher's running state", () => {
+      return Promise.resolve()
+        .then(() => expect(dispatcher.isRunning()).to.be.false)
+        .then(() => dispatcher.start())
+        .then(() => expect(dispatcher.isRunning()).to.be.true)
+        .then(() => dispatcher.stop())
+        .then(() => expect(dispatcher.isRunning()).to.be.false);
+    });
+  });
 });

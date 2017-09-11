@@ -21,6 +21,7 @@ Yarn:
 $ yarn add electron-event-dispatcher
 ```
 
+
 ## Usage
 
 _lib/device-events-dispatcher.js_
@@ -206,6 +207,9 @@ Stop the event dispatcher. Unbinds all `#connect()`ed event emitters' handlers.
 
 #### `#restart()` ⇒ `Promise`
 Restart the event dispatcher.
+
+#### `#isRunning` ⇒ `boolean`
+Returns `true` if the event dispatcher is running.
 
 
 ## Contributing
