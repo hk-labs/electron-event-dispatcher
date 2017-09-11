@@ -108,7 +108,6 @@ function createMainWindow() {
   deviceEventsDispatcher.attach(mainWindow);
   
   mainWindow.on('closed', () => {
-    deviceEventsDispatcher.detach(mainWindow);
     mainWindow = null;
   });
 }
@@ -120,7 +119,6 @@ function createSettingsWindow() {
   deviceEventsDispatcher.attach(settingsWindow);
     
   settingsWindow.on('closed', () => {
-    deviceEventsDispatcher.detach(settingsWindow);
     settingsWindow = null;
   });
 }
@@ -171,6 +169,8 @@ Detach a given `window` from the event dispatcher.
 
 _Technically, removes a given `window` reference from
 the attached windows collection to give'em be garbage collected._
+
+> Note that windows are detached automatically on `closed`.
 
 | Param  | Type            | Description                          |
 | ------ | --------------- | ------------------------------------ |

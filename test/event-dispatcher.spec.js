@@ -1,3 +1,5 @@
+'use strict';
+
 const {EventEmitter} = require('events');
 
 const {BrowserWindow} = require('./spec-helpers');
@@ -10,13 +12,62 @@ describe('EventDispatcher', () => {
   let dispatcher;
   beforeEach(() => (dispatcher = new EventDispatcher()));
 
-  describe('#detach', () => {
-    it("doesn't fail when detaching unrecognized items", () => {
-      const window = new BrowserWindow();
-      dispatcher.attach(window);
+  describe('#attach', () => {
+    it('automatically detaches a given window on `closed`', () => {
+      const window1 = new BrowserWindow();
+      const window2 = new BrowserWindow();
 
-      const object = {};
-      dispatcher.detach(object);
+      expect(dispatcher)
+        .to.have.property('windows')
+        .that.is.an('array')
+        .and.is.empty;
+
+      dispatcher.attach(window1);
+      dispatcher.attach(window2);
+
+      expect(dispatcher)
+        .to.have.property('windows')
+        .with.lengthOf(2);
+
+      window1.emit('closed');
+
+      expect(dispatcher)
+        .to.have.property('windows')
+        .with.lengthOf(1);
+
+      window2.emit('closed');
+
+      expect(dispatcher)
+        .to.have.property('windows')
+        .and.is.empty;
+    });
+  });
+
+  describe('#detach', () => {
+    it("doesn't fail when a window is already detached", () => {
+      const window1 = new BrowserWindow();
+      const window2 = new BrowserWindow();
+
+      dispatcher.attach(window1);
+      dispatcher.attach(window2);
+
+      expect(dispatcher)
+        .to.have.property('windows')
+        .that.is.an('array')
+        .with.lengthOf(2);
+
+      dispatcher.detach(window1);
+      dispatcher.detach(window1); // detaching twice!
+
+      expect(dispatcher)
+        .to.have.property('windows')
+        .with.lengthOf(1);
+
+      dispatcher.detach(window2);
+
+      expect(dispatcher)
+        .to.have.property('windows')
+        .and.is.empty;
     });
   });
 

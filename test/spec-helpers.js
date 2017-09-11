@@ -1,12 +1,18 @@
+'use strict';
+
+const {EventEmitter} = require('events');
+
 /**
- * Electron BrowserWindow stub.
+ * Electron's BrowserWindow stub.
  */
-class BrowserWindow {
+class BrowserWindow extends EventEmitter {
   /**
    * @param {object} [options] – browser window options
-   * @param {IPC} [options.ipcMain] – electron's ipcMain reference
+   * @param {Electron.AllElectron.ipcMain} [options.ipcMain] – ipcMain stub
    */
   constructor(options = {}) {
+    super();
+
     this.webContents = {
       send: sinon.stub()
     };
