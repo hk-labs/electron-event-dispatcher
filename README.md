@@ -1,8 +1,8 @@
 # Electron Event Dispatcher
 
 [![Build Status](https://travis-ci.org/hk-labs/electron-event-dispatcher.svg?branch=master)](https://travis-ci.org/hk-labs/electron-event-dispatcher)
-[![bitHound Overall Score](https://www.bithound.io/github/hk-labs/electron-event-dispatcher/badges/score.svg)](https://www.bithound.io/github/hk-labs/electron-event-dispatcher)
 [![npm version](https://badge.fury.io/js/electron-event-dispatcher.svg)](https://badge.fury.io/js/electron-event-dispatcher)
+[![dependencies Status](https://david-dm.org/hk-labs/electron-event-dispatcher/status.svg)](https://david-dm.org/hk-labs/electron-event-dispatcher)
 
 Helps you to organize communication between `BrowserWindow`s, main/renderer IPCs,
 Sockets or any other `EventEmitter`s in your [Electron](https://electron.atom.io/) applications.
